@@ -2,12 +2,15 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import postRoutes from './routes/posts.js';
 
 // the above is new syntax instead of writing const express = require('express');
 // one additional thing to do is go to package.json and add: "type":"module"
 
 
 const app = express();
+
+app.use('/posts', postRoutes);
 
 app.use(bodyParser.json({ limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
